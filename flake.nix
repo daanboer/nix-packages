@@ -22,5 +22,8 @@
         overlays = [ (import ./extra) unstableOverlay ];
         config.allowUnfree = true;
       };
-    in { packages.${system} = packages; };
+    in {
+      packages.${system} = packages;
+      lib = stable.lib;
+    };
 }
