@@ -23,7 +23,7 @@
         config.allowUnfree = true;
       };
     in {
-      packages.${system} = packages;
+      legacyPackages.${system} = packages;
       lib = stable.lib;
     };
 }
