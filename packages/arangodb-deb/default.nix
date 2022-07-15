@@ -4,12 +4,6 @@ stdenv.mkDerivation rec {
   pname = "arangodb";
   version = "3.7.12";
 
-  # src = fetchurl {
-  #   url =
-  #     "https://download.arangodb.com/arangodb37/Community/Linux/arangodb3_3.7.5-1_amd64.deb";
-  #   sha256 = "0a089gq2ijq1mc17pcf3asvqqwbvwc3yg3hbyw7j19dp8h4va450";
-  # };
-
   src = fetchurl {
     url =
       "https://download.arangodb.com/arangodb37/Community/Linux/arangodb3_3.7.12-1_amd64.deb";
@@ -38,7 +32,7 @@ stdenv.mkDerivation rec {
         		mv usr/bin $out/usr
         		mv usr/share $out/usr
     				mv etc $out
-          '';
+  '';
 
   postFixup = ''
     cd $out/usr/bin
