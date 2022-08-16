@@ -2,8 +2,8 @@
   description = "Custom Nix packages flake.";
 
   inputs = {
-    stable.url = "nixpkgs/nixos-22.05";
-    unstable.url = "nixpkgs/nixos-unstable";
+    stable.url = "github:NixOS/nixpkgs/nixos-22.05";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
   outputs = { self, stable, unstable }:
