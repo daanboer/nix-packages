@@ -9,6 +9,8 @@ prev: final: {
   yp-tools = final.callPackage ./yp-tools { };
   ypbind-mt = final.callPackage ./ypbind-mt { };
   ly = final.callPackage ./ly { };
+  mendeley-reference-manager =
+    final.callPackage ./mendeley-reference-manager { };
 
   davmail = final.davmail.overrideAttrs (prev: rec {
     version = "6.0.1";
