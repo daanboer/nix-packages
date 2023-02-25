@@ -21,6 +21,6 @@ prev: final: {
     };
   });
 
-  unstable.waybar = final.unstable.waybar.overrideAttrs
+  unstable.waybar-experimental = final.unstable.waybar.overrideAttrs
     (old: { mesonFlags = old.mesonFlags ++ [ "-Dexperimental=true" ]; });
 }
