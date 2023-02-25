@@ -20,4 +20,7 @@ prev: final: {
       sha256 = "sha256-QK0G4p5QQPou67whuvzGHOgH21PL0Rb9PY8x+toMP8Q=";
     };
   });
+
+  unstable.waybar = final.unstable.waybar.overrideAttrs
+    (old: { mesonFlags = old.mesonFlags ++ [ "-Dexperimental=true" ]; });
 }
