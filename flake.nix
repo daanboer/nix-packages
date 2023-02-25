@@ -19,7 +19,7 @@
 
       packages = import stable {
         inherit system;
-        overlays = [ (import ./packages) unstableOverlay ];
+        overlays = [ unstableOverlay (import ./packages) ];
         config.allowUnfree = true;
       };
     in {
