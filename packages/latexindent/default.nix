@@ -2,7 +2,7 @@
 
 perlPackages.buildPerlPackage rec {
   pname = "latexindent";
-  version = "3.15";
+  version = "3.20.4";
 
   src = fetchurl {
     url =
