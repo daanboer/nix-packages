@@ -7,7 +7,7 @@ perlPackages.buildPerlPackage rec {
   src = fetchurl {
     url =
       "https://github.com/cmhughes/latexindent.pl/releases/download/V${version}/latexindent.zip";
-    sha256 = "sha256-DAeBy2DE4OE7kzxjyjdAWDtwQzW0Evs8tXCA/ZlWeD8=";
+    sha256 = "sha256-qWv7gWp/swmHjwG4svnqAFk/l6zAu0W9mus+fO4y+So=";
   };
 
   outputs = [ "out" ];
