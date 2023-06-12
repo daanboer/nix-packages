@@ -11,6 +11,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ autoPatchelfHook dpkg ];
+  buildInputs = [ stdenv.cc.cc.lib ];
 
   unpackCmd = ''
     mkdir tmp
