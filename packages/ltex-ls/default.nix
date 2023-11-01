@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation rec {
   pname = "ltex-ls";
-  version = "15.2.0";
+  version = "16.0.0";
 
   src = fetchurl {
     url =
