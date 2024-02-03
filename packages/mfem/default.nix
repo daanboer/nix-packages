@@ -1,4 +1,4 @@
-{ fetchFromGitHub, stdenv, cmake, enableTests ? true }:
+{ fetchFromGitHub, stdenv, cmake, ninja, enableTests ? true }:
 
 stdenv.mkDerivation rec {
   pname = "mfem";
@@ -11,9 +11,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-XR3cv7029u6ypm1VQ4FpAXzFeV4pwqADyoKwBULQI28=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [ cmake ninja ];
 
   doCheck = enableTests;
 
-  cmakeFlags = [ "DBUILD_SHARED_LIBS=1" ];
+  cmakeFlags = [ "-DBUILD_SHARED_LIBS=1" ];
 }
