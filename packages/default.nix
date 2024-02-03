@@ -1,4 +1,5 @@
 prev: final: {
+  mfem = final.callPackage ./mfem { enableTests = false; };
   arangodb_deb = final.callPackage ./arangodb-deb { };
   g810-led = final.callPackage ./g810-led { };
   latexindent = final.callPackage ./latexindent { };
