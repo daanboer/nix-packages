@@ -2,11 +2,16 @@
   description = "Custom Nix packages flake.";
 
   inputs = {
-    stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    stable.url = "github:NixOS/nixpkgs/nixos-unstable";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, stable, unstable }:
+  outputs =
+    {
+      self,
+      stable,
+      unstable,
+    }:
     let
       system = "x86_64-linux";
 
@@ -19,10 +24,14 @@
 
       packages = import stable {
         inherit system;
-        overlays = [ unstableOverlay (import ./packages) ];
+        overlays = [
+          unstableOverlay
+          (import ./packages)
+        ];
         config.allowUnfree = true;
       };
-    in {
+    in
+    {
       legacyPackages.${system} = packages;
       lib = stable.lib;
     };
