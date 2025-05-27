@@ -2,7 +2,7 @@
   description = "Custom Nix packages flake.";
 
   inputs = {
-    stable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
