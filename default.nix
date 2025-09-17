@@ -13,7 +13,7 @@ let
 
   unstableOverlay = final: prev: {
     unstable = import unstable {
-      system = prev.system or system;
+      inherit system;
       config.allowUnfree = true;
     };
   };
@@ -21,8 +21,7 @@ let
   customOverlay = import ./packages;
 
   # Gate custom overlay to x86_64-linux only
-  customIfX86_64 =
-    final: prev: if (prev.system or system) == "x86_64-linux" then (customOverlay final prev) else { };
+  customIfX86_64 = final: prev: if system == "x86_64-linux" then (customOverlay final prev) else { };
 in
 import stable (
   args
