@@ -32,6 +32,10 @@
       };
     in
     {
+      overlays = {
+        unstable = unstableOverlay;
+        custom = (import ./packages);
+      };
       legacyPackages.${system} = packages;
       lib = stable.lib;
     };
