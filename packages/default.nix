@@ -1,4 +1,4 @@
-prev: final: {
+final: prev: {
   mfem = final.callPackage ./mfem { enableTests = false; };
   glvis = final.callPackage ./glvis { enableTests = false; };
   arangodb_deb = final.callPackage ./arangodb-deb { };
