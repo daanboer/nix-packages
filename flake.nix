@@ -17,7 +17,6 @@
       systems,
     }:
     let
-      lib = stable.lib;
       allSystems = import systems;
 
       unstableOverlay = final: prev: {
@@ -39,10 +38,22 @@
           ];
           config.allowUnfree = true;
         };
+
+      nixosSystem =
+        args@{
+          system ? builtins.currentSystem,
+          pkgs ? null,
+          ...
+        }:
+        stable.lib.nixosSystem (if pkgs == null then args // { pkgs = mkPkgs system; } else args);
+
+      lib = stable.lib // {
+        inherit nixosSystem;
+      };
     in
     {
       # Expose the same lib as nixpkgs
-      lib = lib;
+      inherit lib;
 
       # Named overlays users can import/compose
       overlays = {
