@@ -1,5 +1,12 @@
-{ fetchFromGitHub, stdenv, libnsl, libtirpc, libxcrypt, autoreconfHook
-, pkgconfig }:
+{
+  fetchFromGitHub,
+  stdenv,
+  libnsl,
+  libtirpc,
+  libxcrypt,
+  autoreconfHook,
+  pkg-config,
+}:
 
 stdenv.mkDerivation rec {
   pname = "yp-tools";
@@ -12,8 +19,15 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-e9Q9bNr5ZpLJQ6QqIBxVbv/ShXC4pOdwgrCA6/QAcL0=";
   };
 
-  buildInputs = [ libnsl libtirpc libxcrypt ];
-  nativeBuildInputs = [ autoreconfHook pkgconfig ];
+  buildInputs = [
+    libnsl
+    libtirpc
+    libxcrypt
+  ];
+  nativeBuildInputs = [
+    autoreconfHook
+    pkg-config
+  ];
 
   autoreconfPhase = ''
     ./autogen.sh

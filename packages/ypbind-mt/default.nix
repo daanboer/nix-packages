@@ -1,5 +1,15 @@
-{ fetchFromGitHub, stdenv, libnsl, libtirpc, autoreconfHook, pkgconfig, libxslt
-, docbook-xsl-ns, libxml2, docbook_xml_dtd_45 }:
+{
+  fetchFromGitHub,
+  stdenv,
+  libnsl,
+  libtirpc,
+  autoreconfHook,
+  pkg-config,
+  libxslt,
+  docbook-xsl-ns,
+  libxml2,
+  docbook_xml_dtd_45,
+}:
 
 stdenv.mkDerivation rec {
   pname = "ypbind-mt";
@@ -12,8 +22,14 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-P8LH1vBTrNdgUQhzeixxBZR4atXyRVF+DuUbR6UeBJY=";
   };
 
-  buildInputs = [ libnsl libtirpc ];
-  nativeBuildInputs = [ autoreconfHook pkgconfig ];
+  buildInputs = [
+    libnsl
+    libtirpc
+  ];
+  nativeBuildInputs = [
+    autoreconfHook
+    pkg-config
+  ];
 
   autoreconfPhase = ''
     ./autogen.sh
