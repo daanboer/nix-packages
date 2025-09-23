@@ -39,6 +39,13 @@
           config.allowUnfree = true;
         };
 
+      isDerivationSafe =
+        d:
+        let
+          eval = builtins.tryEval (d.type or null);
+        in
+        eval.success && eval.value == "derivation";
+
       nixosSystem =
         args@{
           system ? builtins.currentSystem,
@@ -64,7 +71,11 @@
       # `legacyPackages` like nixpkgs (per-system package sets)
       legacyPackages = lib.genAttrs allSystems mkPkgs;
 
-      # Many flakes expect `packages.${system}` to mirror legacyPackages
-      packages = self.legacyPackages;
+      # Many flakes expect `packages.${system}` to mirror legacyPackages.
+      # Provide a filtered version of `legacyPackages` such that `packages` can
+      # be used in `nix search`.
+      packages = lib.mapAttrs (
+        _system: pkgs: lib.filterAttrs (_name: pkg: isDerivationSafe pkg) pkgs
+      ) self.legacyPackages;
     };
 }
