@@ -44,7 +44,7 @@
         let
           eval = builtins.tryEval (d.type or null);
         in
-        eval.success && eval.value == "derivation";
+        eval.success;
 
       nixosSystem =
         args@{
