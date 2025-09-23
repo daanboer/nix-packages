@@ -1,16 +1,25 @@
-{ stdenv, fetchurl, autoPatchelfHook, makeWrapper, dpkg }:
+{
+  stdenv,
+  fetchurl,
+  autoPatchelfHook,
+  makeWrapper,
+  dpkg,
+}:
 
 stdenv.mkDerivation rec {
   pname = "arangodb";
   version = "3.7.12";
 
   src = fetchurl {
-    url =
-      "https://download.arangodb.com/arangodb37/Community/Linux/arangodb3_3.7.12-1_amd64.deb";
+    url = "https://download.arangodb.com/arangodb37/Community/Linux/arangodb3_3.7.12-1_amd64.deb";
     sha256 = "12n1iskif3g8bv1drkifg0f9a9kkmpi4ql6wxcibpj9awnjkgncz";
   };
 
-  nativeBuildInputs = [ autoPatchelfHook makeWrapper dpkg ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+    makeWrapper
+    dpkg
+  ];
 
   unpackCmd = ''
     mkdir tmp

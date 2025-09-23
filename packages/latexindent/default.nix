@@ -1,19 +1,25 @@
-{ fetchurl, lib, perl, perlPackages, stdenv, shortenPerlShebang, unzip }:
+{
+  fetchurl,
+  lib,
+  perl,
+  perlPackages,
+  stdenv,
+  shortenPerlShebang,
+  unzip,
+}:
 
 perlPackages.buildPerlPackage rec {
   pname = "latexindent";
   version = "3.20.4";
 
   src = fetchurl {
-    url =
-      "https://github.com/cmhughes/latexindent.pl/releases/download/V${version}/latexindent.zip";
+    url = "https://github.com/cmhughes/latexindent.pl/releases/download/V${version}/latexindent.zip";
     sha256 = "sha256-qWv7gWp/swmHjwG4svnqAFk/l6zAu0W9mus+fO4y+So=";
   };
 
   outputs = [ "out" ];
 
-  nativeBuildInputs = [ unzip ]
-    ++ lib.optional stdenv.isDarwin shortenPerlShebang;
+  nativeBuildInputs = [ unzip ] ++ lib.optional stdenv.isDarwin shortenPerlShebang;
   propagatedBuildInputs = with perlPackages; [
     FileHomeDir
     LogDispatch
@@ -44,7 +50,8 @@ perlPackages.buildPerlPackage rec {
     mv ./latexindent/defaultSettings.yaml $out
     mkdir -p $out/${perl.libPrefix}
     cp -r ./latexindent/LatexIndent $out/${perl.libPrefix}/
-  '' + lib.optionalString stdenv.isDarwin ''
+  ''
+  + lib.optionalString stdenv.isDarwin ''
     shortenPerlShebang "$out"/bin/latexindent
   '';
 }

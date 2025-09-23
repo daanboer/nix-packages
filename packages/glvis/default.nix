@@ -1,5 +1,19 @@
-{ fetchFromGitHub, stdenv, cmake, ninja, unixtools, libGL, SDL2, glew, glm
-, freetype, fontconfig, xorg, mfem, enableTests ? true }:
+{
+  fetchFromGitHub,
+  stdenv,
+  cmake,
+  ninja,
+  unixtools,
+  libGL,
+  SDL2,
+  glew,
+  glm,
+  freetype,
+  fontconfig,
+  xorg,
+  mfem,
+  enableTests ? true,
+}:
 
 stdenv.mkDerivation rec {
   pname = "glvis";
@@ -12,7 +26,10 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-PiKXwBCpHi7SWr34gESBD01PuZWGN8QhFaG2wt0GZbk=";
   };
 
-  nativeBuildInputs = [ cmake ninja ];
+  nativeBuildInputs = [
+    cmake
+    ninja
+  ];
   buildInputs = [
     unixtools.xxd
     libGL.dev

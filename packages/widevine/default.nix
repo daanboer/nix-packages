@@ -1,16 +1,23 @@
-{ stdenv, fetchurl, autoPatchelfHook, dpkg }:
+{
+  stdenv,
+  fetchurl,
+  autoPatchelfHook,
+  dpkg,
+}:
 
 stdenv.mkDerivation rec {
   pname = "widevine";
   version = "114.0.5735.119";
 
   src = fetchurl {
-    url =
-      "https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${version}-1_amd64.deb";
+    url = "https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${version}-1_amd64.deb";
     sha256 = "1jhxm12sdlgvgnny0p56xsfyxd78mwn9qwc20c33qfvwxrzp9ajp";
   };
 
-  nativeBuildInputs = [ autoPatchelfHook dpkg ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+    dpkg
+  ];
   buildInputs = [ stdenv.cc.cc.lib ];
 
   unpackCmd = ''

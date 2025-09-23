@@ -1,9 +1,13 @@
-{ fetchFromGitHub, stdenv, hidapi }:
+{
+  fetchFromGitHub,
+  stdenv,
+  hidapi,
+}:
 
 let
-  rule = ''
-    ACTION==\"add\", SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"046d\", ATTRS{idProduct}==\"c337\", MODE=\"666\" RUN+=\"$out/bin/g810-led -a 00CDFF\"'';
-in stdenv.mkDerivation rec {
+  rule = ''ACTION==\"add\", SUBSYSTEMS==\"usb\", ATTRS{idVendor}==\"046d\", ATTRS{idProduct}==\"c337\", MODE=\"666\" RUN+=\"$out/bin/g810-led -a 00CDFF\"'';
+in
+stdenv.mkDerivation rec {
   pname = "g810-led";
   version = "0.4.2";
 
