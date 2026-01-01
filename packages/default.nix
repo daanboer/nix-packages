@@ -11,6 +11,8 @@ final: prev: {
   ly = prev.callPackage ./ly { };
   mendeley-reference-manager = prev.callPackage ./mendeley-reference-manager { };
 
+  napi-rs-cli = prev.callPackage ./napi-rs-cli { };
+
   davmail = prev.davmail.overrideAttrs (prev: rec {
     version = "6.0.1";
     src = prev.fetchurl {

@@ -7,6 +7,12 @@
 
     # A small helper to get a standard list of systems
     systems.url = "github:nix-systems/default";
+
+    bun2nix = {
+      url = "github:nix-community/bun2nix";
+      inputs.nixpkgs.follows = "stable";
+      inputs.systems.follows = "systems";
+    };
   };
 
   outputs =
@@ -15,6 +21,7 @@
       stable,
       unstable,
       systems,
+      bun2nix,
     }:
     let
       allSystems = import systems;
@@ -34,6 +41,7 @@
           inherit system;
           overlays = [
             unstableOverlay
+            bun2nix.overlays.default
             customOverlay
           ];
           config.allowUnfree = true;
