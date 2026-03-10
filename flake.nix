@@ -82,8 +82,8 @@
       # Many flakes expect `packages.${system}` to mirror legacyPackages.
       # Provide a filtered version of `legacyPackages` such that `packages` can
       # be used in `nix search`.
-      packages = lib.mapAttrs (
-        _system: pkgs: lib.filterAttrs (_name: pkg: isDerivationSafe pkg) pkgs
-      ) self.legacyPackages;
+      # packages = lib.mapAttrs (
+      #   _system: pkgs: lib.filterAttrs (_name: pkg: isDerivationSafe pkg) pkgs
+      # ) self.legacyPackages;
     };
 }
