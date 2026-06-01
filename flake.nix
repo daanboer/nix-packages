@@ -2,7 +2,7 @@
   description = "Custom Nixpkgs flake (stable with unstable and custom overlays).";
 
   inputs = {
-    stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # A small helper to get a standard list of systems
